@@ -3,15 +3,24 @@ import InternshipCard from "@/components/internships/internship-card";
 import { Button } from "@/components/ui/button";
 
 const page = () => {
+  const filters = [
+    "All",
+    "Frontend",
+    "Backend",
+    "Full Stack",
+    "UI/UX",
+    "Data Science",
+    "Marketing",
+  ];
+
   return (
     <div className="mx-auto my-3 max-w-[800px]">
-      <div className="space-x-2">
-        <Button variant="secondary">Recent job</Button>
-        <Button variant="secondary">Recent job</Button>
-        <Button variant="secondary">Recent job</Button>
-        <Button variant="secondary">Recent job</Button>
-        <Button variant="secondary">Recent job</Button>
-        <Button variant="secondary">Recent job</Button>
+      <div className="flex flex-wrap gap-3 py-3">
+        {filters.map((filter: string) => (
+          <Button key={filter} variant="secondary">
+            {filter}
+          </Button>
+        ))}
       </div>
       <div className="mt-0">
         <InternshipCard />

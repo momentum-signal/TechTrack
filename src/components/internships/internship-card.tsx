@@ -1,10 +1,12 @@
+import { routes } from "@/routes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const InternshipCard = () => {
+  const id = "123";
   return (
-    <Link href={"/"}>
+    <Link href={routes.INTERNSHIP(id)}>
       <div>
         <div className="group mx-2 mt-5 grid  max-w-full grid-cols-12 space-x-8 overflow-hidden rounded-xl border py-8 shadow-sm transition hover:shadow-md sm:mx-auto">
           <div className="order-2 col-span-1 -ml-14 text-left sm:-order-1 sm:ml-4">
@@ -19,7 +21,7 @@ const InternshipCard = () => {
             </div>
           </div>
           <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-            <h3 className="text-sm">Invision</h3>
+            <h3 className="text-sm">Google</h3>
             <h2 className="mb-3 overflow-hidden pr-7 text-lg font-semibold sm:text-xl">
               Sr. Frontend Engineer
             </h2>
@@ -29,18 +31,18 @@ const InternshipCard = () => {
             </p>
 
             <div className="mt-3 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
-              <div>
+              <p>
                 Experience:
-                <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-0.5">
+                <span className="ml-2 mr-3 rounded-full text-gray-900 bg-green-100 px-2 py-0.5">
                   2 Years
                 </span>
-              </div>
-              <div className="">
+              </p>
+              <p>
                 Salary:
-                <span className="ml-2 mr-3 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
+                <span className="ml-2 mr-3 rounded-full text-gray-900 bg-blue-100 px-2 py-0.5">
                   180-250k
                 </span>
-              </div>
+              </p>
             </div>
 
             <div className="relative mt-3 flex items-center gap-x-4">

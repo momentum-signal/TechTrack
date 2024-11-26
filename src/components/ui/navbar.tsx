@@ -13,10 +13,10 @@ import { routes } from "@/routes";
 import { Logo } from "@/assets/icons";
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Internships", href: routes.internships },
-  { name: "About", href: "/about" },
-  { name: "Dashboard", href: routes.dashboard },
+  { name: "Home", href: routes.HOME },
+  { name: "Internships", href: routes.INTERNSHIPS },
+  { name: "About", href: routes.ABOUT },
+  { name: "Dashboard", href: routes.DASHBOARD },
 ];
 
 export function Navbar() {

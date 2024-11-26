@@ -1,5 +1,7 @@
 export const routes = {
-  internships: "/internships",
-  internship: (jobId: string) => `/internships/${jobId}`,
-  dashboard: "/dashboard",
+  HOME: "/",
+  INTERNSHIPS: "/internships",
+  INTERNSHIP: (internshipId: string) => `/internships/${internshipId}`,
+  ABOUT: "/about",
+  DASHBOARD: "/dashboard",
 } as const;
