@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { routes } from "@/routes";
 import { Logo } from "@/assets/icons";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { name: "Home", href: routes.HOME },
@@ -62,6 +63,10 @@ export function Navbar() {
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
+
+          <Button>
+            <Link href={routes.LOGIN}>Login</Link>
+          </Button>
         </div>
       </nav>
     </header>
