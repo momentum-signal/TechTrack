@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Providers } from "@/lib/Providers";
+import { siteConfig } from "@/config/site";
 // import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "Tech Track",
-  description: "...",
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
