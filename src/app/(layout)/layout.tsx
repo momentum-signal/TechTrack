@@ -1,13 +1,13 @@
 import { Navbar } from "@/components/ui/navbar";
 import { ReactNode } from "react";
 
-const WithLayoutLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="relative flex flex-col h-screen">
       <Navbar />
-      <main className="px-20 py-5">{children}</main>
+      <main>{children}</main>
     </div>
   );
 };
 
-export default WithLayoutLayout;
+export default RootLayout;

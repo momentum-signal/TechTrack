@@ -23,6 +23,8 @@ const navItems = [
 export function Navbar() {
   const pathname = usePathname();
 
+  const user = false;
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="flex h-14 items-center justify-between px-10">
@@ -48,6 +50,7 @@ export function Navbar() {
             </Link>
           ))}
         </div>
+
         {/* Search Bar and Profile */}
         <div className="flex justify-between items-end gap-4">
           <div className="relative">
@@ -58,15 +61,20 @@ export function Navbar() {
               className="w-64 bg-muted pl-8"
             />
           </div>
-          <ThemeToggle />
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
 
-          <Button>
-            <Link href={routes.LOGIN}>Login</Link>
-          </Button>
+          {/* Light & Dark toggle button */}
+          <ThemeToggle />
+
+          {user ? (
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          ) : (
+            <Button>
+              <Link href={routes.LOGIN}>Login</Link>
+            </Button>
+          )}
         </div>
       </nav>
     </header>

@@ -1,8 +1,8 @@
 const page = () => {
   return (
-    <div>
+    <main className="px-40 py-5">
       <h1>About</h1>
-    </div>
+    </main>
   );
 };
 
