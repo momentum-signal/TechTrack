@@ -19,7 +19,7 @@ import {
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import loginValidationSchema from "@/lib/schemas/login.schemas";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log(data);
   };
@@ -30,16 +30,26 @@ const LoginForm = () => {
         resolver={zodResolver(loginValidationSchema)}
         onSubmit={onSubmit}
       >
-        <Card className="mx-auto max-w-sm">
+        <Card className="mx-auto max-w-sm w-[900px]">
           <CardHeader>
-            <CardTitle className="text-2xl">Login</CardTitle>
+            <CardTitle className="text-2xl">Create Account</CardTitle>
             <CardDescription>
-              Enter your email below to login to your account
+              Enter your details below to create a new account
             </CardDescription>
           </CardHeader>
 
           <CardContent>
             <div className="grid gap-4">
+              <div className="flex justify-between gap-2">
+                <div className="grid gap-2">
+                  <Label htmlFor="firstname">Firstname</Label>
+                  <AppInput name="firstname" />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="lastname">Lastname</Label>
+                  <AppInput name="lastname" />
+                </div>
+              </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <AppInput name="email" />
@@ -54,7 +64,7 @@ const LoginForm = () => {
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
-              <Link href={routes.REGISTER} className="underline">
+              <Link href={routes.LOGIN} className="underline">
                 Register
               </Link>
             </div>
@@ -65,4 +75,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

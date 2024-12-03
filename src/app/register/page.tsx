@@ -1,13 +1,11 @@
-import { routes } from "@/routes";
-import Link from "next/link";
+import RegisterForm from "@/components/register/register-form";
+
 import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <Link href={routes.LOGIN} className="underline">
-        Register
-      </Link>
+    <div className="flex h-screen w-full items-center justify-center px-4">
+      <RegisterForm />
     </div>
   );
 };
