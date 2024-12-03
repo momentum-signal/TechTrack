@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "../ui/button";
+
+import { Button } from "@/components/ui/button";
+import { routes } from "@/lib/routes";
 
 const Hero = () => {
   return (
     <section>
-      <div className="relative isolate px-6 lg:px-8">
+      <div className="relative isolate px-3 lg:px-8">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -19,36 +21,35 @@ const Hero = () => {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           />
         </div>
-        <div className="mx-auto max-w-2xl py-20 sm:py-24 lg:py-56">
+        <div className="mx-auto max-w-2xl py-10 sm:py-24 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm/6">
-              Announcing our next round of funding.{" "}
-              <a href="#" className="font-semibold text-indigo-600">
-                <span aria-hidden="true" className="absolute inset-0" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </a>
+            <div className="relative rounded-full px-3 py-1 text-sm">
+              Empowering Tomorrow&apos;s Professionals, Today.{" "}
             </div>
           </div>
           <div className="text-center">
             <h1 className="text-balance text-5xl font-semibold tracking-tightsm:text-7xl">
-              Data to enrich your online business
+              Kickstart Your Career with the Perfect Internship
             </h1>
             <p className="mt-8 text-pretty text-lg font-mediumsm:text-xl/8">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
+              Find internships that match your skills and passion, and gain
+              hands-on experience to shape your future.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button>
                 <Link
-                  href="#"
-                  className="rounded-md px-3.5 py-2.5 text-sm font-semiboldshadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                  href={routes.LOGIN}
+                  className="rounded-md px-3.5 py-2.5 text-sm font-semiboldshadow-sm"
                 >
                   Get started
                 </Link>
               </Button>
-              <a href="#" className="text-sm/6 font-semibold">
-                Find more <span aria-hidden="true">→</span>
-              </a>
+              <Link
+                href={routes.INTERNSHIPS}
+                className="text-sm/6 font-semibold"
+              >
+                Find internships <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </div>
         </div>

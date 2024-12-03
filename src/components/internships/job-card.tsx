@@ -3,7 +3,7 @@ import React from "react";
 
 const JobCard = () => {
   return (
-    <div className="overflow-hidden p-8 rounded-lg border shadow transition hover:shadow-sm w-[450px]">
+    <div className="overflow-hidden p-8 rounded-2xl border shadow hover:shadow-md ">
       <article className="flex max-w-xl flex-col items-start justify-between">
         <div className="flex items-center gap-x-4 text-xs">
           <time dateTime="2020-03-16">Mar 16, 2020</time>
@@ -28,11 +28,11 @@ const JobCard = () => {
         <div className="mt-5 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
           <div>
             Experience:
-            <span className="ml-2 mr-3 rounded-full px-2 py-0.5">2 Years</span>
+            <span className="ml-2 mr-2 rounded-full">2 Years</span>
           </div>
           <p>
             Salary:
-            <span className="ml-2 mr-3 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
+            <span className="ml-2 mr-2 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
               180-250k
             </span>
           </p>

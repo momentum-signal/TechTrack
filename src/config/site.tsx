@@ -1,4 +1,4 @@
-import { routes } from "@/routes";
+import { routes } from "@/lib/routes";
 
 export type SiteConfig = typeof siteConfig;
 

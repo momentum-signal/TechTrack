@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Home, ShoppingCart, User } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { routes } from "@/routes";
+import { routes } from "@/lib/routes";
 
 const paths = [
   { path: routes.DASHBOARD, label: "Dashboard", icon: Home },

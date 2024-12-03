@@ -5,7 +5,7 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
-import { routes } from "@/routes";
+import { routes } from "@/lib/routes";
 import { Label } from "@/components/ui/label";
 import AppInput from "@/components/form/app-input";
 import AppForm from "@/components/form/app-form";

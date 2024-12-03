@@ -5,7 +5,7 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
-import { routes } from "@/routes";
+import { routes } from "@/lib/routes";
 import { Label } from "@/components/ui/label";
 import AppInput from "@/components/form/app-input";
 import AppForm from "@/components/form/app-form";
@@ -63,9 +63,9 @@ const RegisterForm = () => {
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+              Already have an account?{" "}
               <Link href={routes.LOGIN} className="underline">
-                Register
+                Login
               </Link>
             </div>
           </CardContent>
