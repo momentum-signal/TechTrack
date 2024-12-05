@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-import { Home, ShoppingCart, User } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Home, Paperclip, User } from "lucide-react";
+
 import { routes } from "@/lib/routes";
 
 const paths = [
   { path: routes.DASHBOARD, label: "Dashboard", icon: Home },
-  { path: routes.APPLICATION, label: "Applications", icon: ShoppingCart },
+  { path: routes.APPLICATION, label: "Applications", icon: Paperclip },
   { path: routes.PROFILE, label: "Profile", icon: User },
 ];
 
