@@ -2,7 +2,7 @@ import InternshipCard from "@/components/internships/internship-card";
 
 import { Button } from "@/components/ui/button";
 
-const page = () => {
+const Internships = () => {
   const filters = [
     "All",
     "Frontend",
@@ -36,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Internships;

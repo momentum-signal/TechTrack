@@ -3,16 +3,28 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 import { Menu, Search } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { routes } from "@/lib/routes";
 import { Logo } from "@/assets/icons";
+
+import { cn } from "@/lib/utils";
+import { routes } from "@/lib/routes";
+
+import { Input } from "@/components/ui/input";
+import ThemeToggle from "@/components/theme/theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import ThemeToggle from "../theme/theme-toggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navItems = [
   { name: "Home", href: routes.HOME },
@@ -25,16 +37,19 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const user = false;
+  const { data: session } = useSession();
+
+  console.log("Session:", session);
+  console.log("Session image:", session?.user?.image);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="flex h-14 px-5 md:px-10 lg:px-20 items-center justify-between w-full">
         {/* App Logo */}
-        <div className="flex items-center gap-2">
+        <Link href={routes.HOME} className="flex items-center gap-2">
           <Logo />
           <h2 className="font-medium text-xl">TechTrack</h2>
-        </div>
+        </Link>
 
         {/* Desktop Nav Items */}
         <div className="hidden md:flex items-center gap-6">
@@ -67,11 +82,50 @@ export function Navbar() {
 
           {/* Light & Dark toggle button */}
           <ThemeToggle />
-          {user ? (
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+          {session?.user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="relative h-8 w-8 rounded-full"
+                >
+                  <Avatar className="h-9 w-9">
+                    <AvatarImage
+                      src={session.user.image as string}
+                      alt="@shadcn"
+                    />
+                    <AvatarFallback>
+                      {session?.user?.name
+                        ?.split(" ")
+                        .map((word) => word.charAt(0))
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">
+                      {session?.user?.name}
+                    </p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {session.user.email}
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Link href={routes.PROFILE}>Profile</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => signOut()}>
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <Button className="hidden sm:inline-flex">
               <Link href={routes.LOGIN}>Login</Link>
@@ -120,7 +174,7 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="mt-auto">
-                  {!user && (
+                  {!session?.user && (
                     <Button className="w-full">
                       <Link href={routes.LOGIN}>Login</Link>
                     </Button>

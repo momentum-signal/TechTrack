@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Providers } from "@/lib/Providers";
 import { siteConfig } from "@/config/site";
-// import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: {

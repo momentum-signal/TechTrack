@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -97,8 +96,7 @@ export function ProfileForm() {
                 <Input placeholder="techtrack@gmail.com" disabled {...field} />
               </FormControl>
               <FormDescription>
-                You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>.
+                You can&apos;t update your email address
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -117,10 +115,10 @@ export function ProfileForm() {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
+              {/* <FormDescription>
                 You can <span>@mention</span> other users and organizations to
                 link to them.
-              </FormDescription>
+              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}
