@@ -1,8 +1,10 @@
 import InternshipCard from "@/components/internships/internship-card";
 
 import { Button } from "@/components/ui/button";
+import { getInternships } from "@/services/InternshipService";
+import { InternshipProps } from "@/types/internship.types";
 
-const Internships = () => {
+const Internships = async () => {
   const filters = [
     "All",
     "Frontend",
@@ -12,6 +14,8 @@ const Internships = () => {
     "Data Science",
     "Marketing",
   ];
+
+  const { data: internships } = await getInternships();
 
   return (
     <main className="px-40 py-5">
@@ -24,12 +28,9 @@ const Internships = () => {
           ))}
         </div>
         <div className="mt-0">
-          <InternshipCard />
-          <InternshipCard />
-          <InternshipCard />
-          <InternshipCard />
-          <InternshipCard />
-          <InternshipCard />
+          {internships.map((internship: InternshipProps) => (
+            <InternshipCard key={internship.id} data={internship} />
+          ))}
         </div>
       </div>
     </main>
