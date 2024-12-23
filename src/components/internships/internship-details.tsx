@@ -9,6 +9,7 @@ import { InternshipProps } from "@/types/internship.types";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/app/loading";
 import { toast } from "@/hooks/use-toast";
+import { useCreateApplication } from "@/hooks/application.hook";
 
 const InternshipDetails = ({ internship }: { internship: InternshipProps }) => {
   const {
@@ -23,25 +24,27 @@ const InternshipDetails = ({ internship }: { internship: InternshipProps }) => {
     contactInformation,
   } = internship || {};
   const { data: session, status } = useSession();
+  const { mutate: handleCreateApplication } = useCreateApplication();
 
   if (status === "loading") {
     return <Loading />;
   }
-  if (status == "unauthenticated") {
-    signIn(undefined, { callbackUrl: window.location.href });
-    return null;
-  }
 
   const handleApply = () => {
+    if (status == "unauthenticated") {
+      signIn(undefined, { callbackUrl: window.location.href });
+      return null;
+    }
     const applicationData = {
       internshipId: id,
       userEmail: session?.user?.email,
     };
-    toast({
-      title: "Scheduled: Catch up",
-      description: "Friday, February 10, 2023 at 5:57 PM",
-    });
+    // toast({
+    //   title: `${applicationData.internshipId}`,
+    //   description: `${applicationData.userEmail}`,
+    // });
     console.log(applicationData);
+    handleCreateApplication(applicationData);
   };
 
   return (
@@ -86,7 +89,7 @@ const InternshipDetails = ({ internship }: { internship: InternshipProps }) => {
 
           <div className="mt-4 lg:row-span-3">
             <h2>Salary</h2>
-            <p className="text-3xl tracking-tight ">{salaryRange}</p>
+            <p className="text-3xl tracking-tight ">{salaryRange} MYR</p>
           </div>
 
           <div className="mt-4">
