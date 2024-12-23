@@ -13,6 +13,7 @@ export const getInternships = async () => {
   }
 };
 
+// Get single internship details by ID
 export const getInternshipById = async (internshipId: string) => {
   try {
     const { data } = await axiosInstance.get(`/internships/${internshipId}`);

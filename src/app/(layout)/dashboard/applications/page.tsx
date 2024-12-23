@@ -1,28 +1,52 @@
+"use client";
+
 import { DataTable } from "@/components/dashbaord/applications/data-table";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { applicationSchema } from "@/lib/schemas/application.schema";
-import { z } from "zod";
 import { columns } from "@/components/dashbaord/applications/columns";
+import { getApplicationsByEmail } from "@/services/ApplicationService";
+import { transformApplications } from "@/lib/utils";
+import { useSession } from "next-auth/react";
+import Loading from "@/app/loading";
+import { TransformedApplicationProps } from "@/types/application.types";
 
-// Simulate a database read for applications.
-async function getapplications() {
-  // const response = await fetch("/applications.json");
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const response = await fetch(`${baseUrl}/applications.json`);
+const Applications = () => {
+  // const { data: applications } = await getApplicationsByEmail(
+  //   "isaiketdas@gmail.com"
+  // );
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch data: ${response.statusText}`);
+  const { data: session, status } = useSession();
+  const [applications, setApplications] = useState<
+    TransformedApplicationProps[]
+  >([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchApplications = async (email: string) => {
+      try {
+        const { data: appls } = await getApplicationsByEmail(email);
+        const transformedApplications = transformApplications(appls);
+        setApplications(transformedApplications);
+      } catch (error) {
+        console.error("Error fetching applications:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (
+      status === "authenticated" &&
+      typeof session?.user?.email === "string"
+    ) {
+      fetchApplications(session.user.email);
+    } else if (status === "unauthenticated") {
+      setLoading(false); // Handle unauthenticated state if necessary
+    }
+  }, [status, session]);
+
+  if (loading) {
+    return <Loading />;
   }
-
-  const applications = await response.json(); // Parse response as JSON
-
-  return z.array(applicationSchema).parse(applications);
-}
-
-const Applications = async () => {
-  const applications = await getapplications();
-  const data = 1;
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
@@ -30,7 +54,7 @@ const Applications = async () => {
 
       {/* Application Table  */}
       <div className="p-2 md:p-6 rounded-lg border border-dashed shadow-sm">
-        {data ? (
+        {applications.length > 0 ? (
           <div className="hidden h-full flex-1 flex-col space-y-8 p-0 md:flex">
             <DataTable data={applications} columns={columns} />
           </div>

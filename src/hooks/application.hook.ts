@@ -1,5 +1,8 @@
-import { createApplication } from "@/services/ApplicationService";
-import { useMutation } from "@tanstack/react-query";
+import {
+  createApplication,
+  getApplicationsByEmail,
+} from "@/services/ApplicationService";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "./use-toast";
 import { FieldValues } from "react-hook-form";
 
@@ -21,5 +24,13 @@ export const useCreateApplication = () => {
         description: error.message,
       });
     },
+  });
+};
+
+// Get all applications by Email
+export const useGetApplicationsByEmail = (userEmail: string) => {
+  return useQuery({
+    queryKey: ["GET_APPLICATION_BY_EMAIL"],
+    queryFn: async () => await getApplicationsByEmail(userEmail),
   });
 };

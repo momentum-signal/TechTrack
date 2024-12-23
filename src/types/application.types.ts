@@ -10,3 +10,10 @@ export interface ApplicationResponseProps {
   userEmail: string;
   internship: InternshipProps;
 }
+
+export type TransformedApplicationProps = {
+  companyName: string;
+  title: string;
+  status: string;
+  salaryRange: string;
+};

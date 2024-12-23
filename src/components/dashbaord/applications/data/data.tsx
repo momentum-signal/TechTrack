@@ -40,24 +40,3 @@ export const statuses = [
     color: "text-red-500", // Canceled color
   },
 ];
-
-export const priorities = [
-  {
-    label: "Low",
-    value: "low",
-    icon: ArrowDown,
-    color: "text-green-500", // Low priority color
-  },
-  {
-    label: "Medium",
-    value: "medium",
-    icon: ArrowRight,
-    color: "text-yellow-500", // Medium priority color
-  },
-  {
-    label: "High",
-    value: "high",
-    icon: ArrowUp,
-    color: "text-red-500", // High priority color
-  },
-];

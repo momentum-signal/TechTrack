@@ -1,21 +1,30 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { priorities, statuses } from "./data/data";
+import { statuses } from "./data/data";
 import { Application } from "@/lib/schemas/application.schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 
 export const columns: ColumnDef<Application>[] = [
+  // Company name
   {
-    accessorKey: "id",
+    accessorKey: "companyName",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Application ID" />
+      <DataTableColumnHeader column={column} title="Company name" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => (
+      <div className="flex space-x-2">
+        <span className="max-w-[500px] truncate font-medium">
+          {row.getValue("companyName")}
+        </span>
+      </div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
+
+  // Internship title
   {
     accessorKey: "title",
     header: ({ column }) => (
@@ -31,6 +40,8 @@ export const columns: ColumnDef<Application>[] = [
       );
     },
   },
+
+  // Status
   {
     accessorKey: "status",
     header: ({ column }) => (
@@ -58,26 +69,19 @@ export const columns: ColumnDef<Application>[] = [
       return value.includes(row.getValue(id));
     },
   },
+
+  // Job salary
   {
-    accessorKey: "priority",
+    accessorKey: "salaryRange",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
+      <DataTableColumnHeader column={column} title="Salary Range (MYR)" />
     ),
     cell: ({ row }) => {
-      const priority = priorities.find(
-        (priority) => priority.value === row.getValue("priority")
-      );
-
-      if (!priority) {
-        return null;
-      }
-
       return (
-        <div className="flex items-center">
-          {priority.icon && (
-            <priority.icon className={`mr-2 h-4 w-4 ${priority.color}`} />
-          )}
-          <span>{priority.label}</span>
+        <div className="flex space-x-2">
+          <span className="max-w-[500px] truncate font-medium">
+            {row.getValue("salaryRange")}
+          </span>
         </div>
       );
     },

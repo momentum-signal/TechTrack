@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { InternshipProps } from "@/types/internship.types";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/app/loading";
-import { toast } from "@/hooks/use-toast";
 import { useCreateApplication } from "@/hooks/application.hook";
 
 const InternshipDetails = ({ internship }: { internship: InternshipProps }) => {
@@ -39,11 +38,6 @@ const InternshipDetails = ({ internship }: { internship: InternshipProps }) => {
       internshipId: id,
       userEmail: session?.user?.email,
     };
-    // toast({
-    //   title: `${applicationData.internshipId}`,
-    //   description: `${applicationData.userEmail}`,
-    // });
-    console.log(applicationData);
     handleCreateApplication(applicationData);
   };
 
