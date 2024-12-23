@@ -32,26 +32,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// <html lang="en" className="antialiased">
-//   <head>
-//     <meta name="color-scheme" content="light dark" />
-//   </head>
-//   <body
-//   //  className={`${geistSans.variable} ${geistMono.variable}`}
-//   >
-//     {/* <ThemeProvider
-//       attribute="class"
-//       defaultTheme="system"
-//       enableSystem
-//       disableTransitionOnChange
-//     >
-//       {children}
-//     </ThemeProvider>
-//     <Toaster /> */}
-
-//     <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-//       {children}
-//     </Providers>
-//   </body>
-// </html>

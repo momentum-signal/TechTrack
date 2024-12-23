@@ -1,6 +1,7 @@
 import { routes } from "@/lib/routes";
 import { InternshipProps } from "@/types/internship.types";
 import { Mail } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

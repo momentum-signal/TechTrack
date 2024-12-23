@@ -2,11 +2,13 @@
 
 import { GoogleLogo } from "@/assets/icons";
 import { Button } from "@/components/ui/button";
-import { getSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
-const Login = () => {
-  const session = getSession();
-  console.log("Session: ", session);
+const Login = ({
+  callbackUrl = "http://localhost:3000/dashboard",
+}: {
+  callbackUrl: string;
+}) => {
   return (
     <div className="flex h-screen w-full items-center justify-center px-4">
       {/* <LoginForm /> */}
@@ -14,7 +16,7 @@ const Login = () => {
       <Button
         onClick={() =>
           signIn("google", {
-            callbackUrl: "http://localhost:3000/dashboard",
+            callbackUrl: callbackUrl,
           })
         }
       >

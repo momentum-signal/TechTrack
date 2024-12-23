@@ -2,16 +2,15 @@
 
 import axiosInstance from "@/lib/AxiosInstance";
 import { revalidateTag } from "next/cache";
+import { FieldValues } from "react-hook-form";
 
-export const createApplication = async (data): Promise<any> => {
+export const createApplication = async (data: FieldValues): Promise<any> => {
   try {
-    const { data } = await axiosInstance.post("/items", data);
-
+    const { data: response } = await axiosInstance.post("/applications", data);
     revalidateTag("applications");
-
-    return data;
+    return response;
     /* eslint-disable @typescript-eslint/no-unused-vars */
   } catch (error) {
-    throw new Error("Failed to create post");
+    throw new Error("Failed to create application");
   }
 };

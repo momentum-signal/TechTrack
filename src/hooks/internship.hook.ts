@@ -12,6 +12,7 @@ export const useGetInternships = () => {
   });
 };
 
+// Get all internship by ID
 export const useGetInternshipById = (internshipId: string) => {
   return useQuery({
     queryKey: ["GET_INTERNSHIP_BY_ID"],

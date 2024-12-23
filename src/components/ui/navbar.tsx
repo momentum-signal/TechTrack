@@ -39,9 +39,6 @@ export function Navbar() {
 
   const { data: session } = useSession();
 
-  console.log("Session:", session);
-  console.log("Session image:", session?.user?.image);
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="flex h-14 px-5 md:px-10 lg:px-20 items-center justify-between w-full">
