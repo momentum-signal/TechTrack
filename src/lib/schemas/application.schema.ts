@@ -4,9 +4,9 @@ import { z } from "zod";
 // IRL, you will have a schema for your data models.
 export const applicationSchema = z.object({
   id: z.string(),
+  compantName: z.string(),
   title: z.string(),
   status: z.string(),
-  priority: z.string(),
 });
 
 export type Application = z.infer<typeof applicationSchema>;

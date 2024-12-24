@@ -8,9 +8,10 @@ import { FieldValues } from "react-hook-form";
 export const createApplication = async (data: FieldValues): Promise<any> => {
   try {
     const { data: response } = await axiosInstance.post("/applications", data);
-    revalidateTag("applications");
+    revalidateTag("GET_APPLICATION_BY_EMAIL");
     return response;
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to create application");
   }
 };
@@ -20,7 +21,23 @@ export const getApplicationsByEmail = async (email: string) => {
     const { data } = await axiosInstance.get(`/applications/${email}`);
 
     return data;
-  } catch (error: any) {
+  } catch (error) {
+    console.log("Error: ", error);
     throw new Error("Failed to fetched application");
+  }
+};
+
+// Delete an application by ID
+export const deleteApplication = async (
+  applicationId: string
+): Promise<any> => {
+  try {
+    const { data } = await axiosInstance.delete(
+      `/applications/${applicationId}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to delete application");
   }
 };

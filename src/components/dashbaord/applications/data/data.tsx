@@ -1,13 +1,4 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-  CheckCircle,
-  CircleOff,
-  Loader,
-  Star,
-  User,
-} from "lucide-react";
+import { CheckCircle, CircleOff, Loader, Star, User } from "lucide-react";
 export const statuses = [
   {
     value: "applied",

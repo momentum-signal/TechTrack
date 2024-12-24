@@ -1,40 +1,59 @@
 "use client";
 
 import { Row } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useDeleteApplication } from "@/hooks/application.hook";
+
+interface TableRowData {
+  id: string;
+  companyName: string;
+  title: string;
+  status: string;
+  salaryRange: string;
+}
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
-export function DataTableRowActions<
-  TData
->({}: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions<TData extends TableRowData>({
+  row,
+}: DataTableRowActionsProps<TData>) {
+  const { mutate: deleteApplication } = useDeleteApplication();
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
-        >
-          <MoreHorizontal />
-          <span className="sr-only">Open menu</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[160px]">
-        {/* <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuSeparator /> */}
-        <DropdownMenuItem>Delete</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Delete</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            application and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={() => deleteApplication(row.original.id)}>
+            Delete
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }

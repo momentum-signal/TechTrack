@@ -11,10 +11,6 @@ import Loading from "@/app/loading";
 import { TransformedApplicationProps } from "@/types/application.types";
 
 const Applications = () => {
-  // const { data: applications } = await getApplicationsByEmail(
-  //   "isaiketdas@gmail.com"
-  // );
-
   const { data: session, status } = useSession();
   const [applications, setApplications] = useState<
     TransformedApplicationProps[]
