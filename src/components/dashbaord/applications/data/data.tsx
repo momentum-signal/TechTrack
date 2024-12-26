@@ -25,9 +25,9 @@ export const statuses = [
     color: "text-green-500", // Selected color
   },
   {
-    value: "canceled",
-    label: "Canceled",
+    value: "rejected",
+    label: "Rejected",
     icon: CircleOff,
-    color: "text-red-500", // Canceled color
+    color: "text-red-500", // Rejected color
   },
 ];

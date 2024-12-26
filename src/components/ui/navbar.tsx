@@ -67,18 +67,9 @@ export function Navbar() {
         </div>
 
         <div className="flex justify-between items-end gap-4">
-          {/* Search Bar and Profile */}
-          {/* <div className="relative hidden md:flex">
-            <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search..."
-              className="w-64 bg-muted pl-8"
-            />
-          </div> */}
-
-          {/* Light & Dark toggle button */}
-          <ThemeToggle />
+          <div>
+            <ThemeToggle />
+          </div>
           {session?.user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -124,9 +115,9 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button className="hidden sm:inline-flex">
-              <Link href={routes.LOGIN}>Login</Link>
-            </Button>
+            <Link href={routes.LOGIN}>
+              <Button className="hidden sm:inline-flex">Login</Button>
+            </Link>
           )}
 
           {/* Mobile Menu */}
@@ -172,9 +163,9 @@ export function Navbar() {
                 </div>
                 <div className="mt-auto">
                   {!session?.user && (
-                    <Button className="w-full">
-                      <Link href={routes.LOGIN}>Login</Link>
-                    </Button>
+                    <Link href={routes.LOGIN}>
+                      <Button className="w-full">Login</Button>
+                    </Link>
                   )}
                 </div>
               </div>

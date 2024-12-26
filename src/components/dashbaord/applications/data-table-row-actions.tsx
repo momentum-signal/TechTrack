@@ -1,9 +1,7 @@
 "use client";
 
 import { Row } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -34,6 +32,11 @@ export function DataTableRowActions<TData extends TableRowData>({
 }: DataTableRowActionsProps<TData>) {
   const { mutate: deleteApplication } = useDeleteApplication();
 
+  const handleDeleteApplication = () => {
+    console.log("Deleting application with ID:", row.original.id); // Add this line
+    deleteApplication(row.original.id);
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -49,7 +52,7 @@ export function DataTableRowActions<TData extends TableRowData>({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => deleteApplication(row.original.id)}>
+          <AlertDialogAction onClick={handleDeleteApplication}>
             Delete
           </AlertDialogAction>
         </AlertDialogFooter>

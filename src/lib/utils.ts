@@ -1,4 +1,7 @@
-import { ApplicationResponseProps } from "@/types/application.types";
+import {
+  GetApplicationResponseProps,
+  TransformedApplicationProps,
+} from "@/types/application.types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -7,13 +10,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const transformApplications = (
-  applications: ApplicationResponseProps[]
-) => {
+  applications: GetApplicationResponseProps[]
+): TransformedApplicationProps[] => {
   return applications.map((application) => ({
     id: application.applicationId,
     companyName: application.internship.companyName,
     title: application.internship.internshipTitle,
-    status: "applied",
+    status: application.applicationStatus,
     salaryRange: application.internship.salaryRange,
   }));
 };
