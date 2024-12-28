@@ -13,6 +13,7 @@ const Internships = async () => {
     "UI/UX",
     "Data Science",
     "Marketing",
+    "Machine Learning",
   ];
 
   const { data: internships } = await getInternships();
@@ -20,9 +21,9 @@ const Internships = async () => {
   return (
     <main className="px-40 py-5">
       <div className="mx-auto my-3 max-w-[800px]">
-        <div className="flex flex-wrap gap-3 py-3">
+        <div className="flex flex-wrap justify-between gap-3 gap-y-3">
           {filters.map((filter: string) => (
-            <Button key={filter} variant="secondary">
+            <Button key={filter} variant="secondary" className="h-8">
               {filter}
             </Button>
           ))}

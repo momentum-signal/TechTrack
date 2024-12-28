@@ -30,7 +30,7 @@ const navItems = [
   { name: "Home", href: routes.HOME },
   { name: "Internships", href: routes.INTERNSHIPS },
   { name: "About", href: routes.ABOUT },
-  { name: "Dashboard", href: routes.DASHBOARD },
+  { name: "Dashboard", href: routes.APPLICATION },
 ];
 
 export function Navbar() {

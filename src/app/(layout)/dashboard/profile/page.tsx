@@ -1,4 +1,4 @@
-import { ProfileForm } from "@/components/dashbaord/profile/profile-form";
+import ProfileForm from "@/components/dashbaord/profile/profile-form";
 import React from "react";
 
 const Profile = () => {

@@ -24,7 +24,10 @@ export default function RootLayout({
       <head>
         <meta name="color-scheme" content="light dark" />
       </head>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body
+        className="min-h-screen bg-background font-sans antialiased"
+        suppressHydrationWarning
+      >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           {children}
         </Providers>

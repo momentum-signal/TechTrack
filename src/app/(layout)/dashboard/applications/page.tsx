@@ -1,14 +1,13 @@
 "use client";
 
-import { DataTable } from "@/components/dashbaord/applications/data-table";
 import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
-import { columns } from "@/components/dashbaord/applications/columns";
 import { getApplicationsByEmail } from "@/services/ApplicationService";
 import { transformApplications } from "@/lib/utils";
-import { useSession } from "next-auth/react";
 import Loading from "@/app/loading";
 import { TransformedApplicationProps } from "@/types/application.types";
+import { ApplicationTable } from "@/components/dashbaord/applications/application-table";
 
 const ApplicationsPage = () => {
   const { data: session, status } = useSession();
@@ -74,7 +73,8 @@ const ApplicationsPage = () => {
       {/* Application Table  */}
       <div className="p-2 md:p-6 rounded-lg border border-dashed shadow-sm">
         <div className="hidden h-full flex-1 flex-col space-y-8 p-0 md:flex">
-          <DataTable data={applications} columns={columns} />
+          {/* <DataTable data={applications} columns={columns} /> */}
+          <ApplicationTable applications={applications} />
         </div>
       </div>
     </main>

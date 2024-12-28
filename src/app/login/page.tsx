@@ -2,10 +2,11 @@
 
 import { GoogleLogo } from "@/assets/icons";
 import { Button } from "@/components/ui/button";
+import { routes } from "@/lib/routes";
 import { signIn } from "next-auth/react";
 
 const Login = ({
-  callbackUrl = "http://localhost:3000/dashboard",
+  callbackUrl = routes.APPLICATION,
 }: {
   callbackUrl: string;
 }) => {

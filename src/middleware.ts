@@ -3,17 +3,13 @@ import { NextResponse } from "next/server";
 import { routes } from "./lib/routes";
 
 // List of routes that require authentication
-const protectedRoutes = [routes.DASHBOARD, routes.APPLICATION];
-
-console.log(protectedRoutes);
+const protectedRoutes = [routes.DASHBOARD, routes.APPLICATION, routes.PROFILE];
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
   const isProtectedRoute = protectedRoutes.some((route) =>
     req.nextUrl.pathname.startsWith(route)
   );
-
-  console.log(isLoggedIn);
 
   if (isProtectedRoute && !isLoggedIn) {
     return NextResponse.redirect(new URL(routes.LOGIN, req.url));
