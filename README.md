@@ -30,7 +30,7 @@ npm install
 
 ### 5. Configure Environment Variables (Optional for now)
 
-Check if the project has an `.env.example` or `.env.local` file in the root folder. If it does:
+Check if the project has an `.env.example` or `.env.local` file in the root folder. If it doesn't:
 
 Create a new .env.local file in the root directory.
 Copy the content from .env.example into .env.local and update the variables with the required values (e.g., API keys, database credentials, etc.).
