@@ -7,7 +7,6 @@ export const getInternships = async () => {
     const { data } = await axiosInstance.get("/internships");
 
     return data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.response) {
       const { message } = error.response.data || {};
@@ -30,7 +29,6 @@ export const getInternshipById = async (internshipId: string) => {
     const { data } = await axiosInstance.get(`/internships/${internshipId}`);
 
     return data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.response) {
       const { message } = error.response.data || {};

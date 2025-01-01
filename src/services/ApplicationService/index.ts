@@ -20,7 +20,6 @@ export const createApplication = async (
     const { data: response } = await axiosInstance.post("/applications", data);
     revalidateTag("applications");
     return response;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.response) {
       const { message } = error.response.data || {};
@@ -51,7 +50,6 @@ export const getApplicationsByEmail = async (
       // Handle unexpected responses that are not errors but indicate failure
       throw new Error(data.message || "Failed to retrieve applications.");
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.response) {
       console.error("Error response from backend:", error.response.data);
@@ -82,7 +80,6 @@ export const deleteApplication = async (
     );
     revalidateTag("applications");
     return data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.response) {
       throw new Error(

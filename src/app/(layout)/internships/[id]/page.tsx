@@ -1,15 +1,10 @@
 import { getInternshipById } from "@/services/InternshipService";
 import InternshipDetails from "@/components/internships/internship-details";
 
-interface InternshipDetailProps {
-  params: {
-    id: string;
-  };
-}
+export type paramsType = Promise<{ id: string }>;
 
-const InternshipDetailsPage = async ({
-  params: { id },
-}: InternshipDetailProps) => {
+const InternshipDetailsPage = async (props: { params: paramsType }) => {
+  const { id } = await props.params;
   const { data: internship } = await getInternshipById(id);
 
   return (

@@ -2,16 +2,10 @@ import { ReactNode } from "react";
 
 interface HomeLayoutProps {
   children: ReactNode;
-  recentInternships: ReactNode;
 }
 
-const HomeLayout = ({ children, recentInternships }: HomeLayoutProps) => {
-  return (
-    <>
-      {children}
-      {recentInternships}
-    </>
-  );
+const HomeLayout = ({ children }: HomeLayoutProps) => {
+  return <>{children}</>;
 };
 
 export default HomeLayout;

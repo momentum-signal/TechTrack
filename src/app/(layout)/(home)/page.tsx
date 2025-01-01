@@ -1,4 +1,3 @@
-import Feature from "@/components/home/feature";
 import Hero from "@/components/home/hero";
 import React from "react";
 
