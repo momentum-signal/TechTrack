@@ -4,8 +4,10 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { routes } from "@/lib/routes";
+import { useSession } from "next-auth/react";
 
 const Hero = () => {
+  const session = useSession();
   return (
     <section>
       <div className="relative isolate px-3 lg:px-8">
@@ -36,14 +38,17 @@ const Hero = () => {
               hands-on experience to shape your future.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button>
-                <Link
-                  href={routes.LOGIN}
-                  className="rounded-md px-3.5 py-2.5 text-sm font-semiboldshadow-sm"
-                >
-                  Get started
-                </Link>
-              </Button>
+              {session.status == "unauthenticated" && (
+                <Button>
+                  <Link
+                    href={routes.LOGIN}
+                    className="rounded-md px-3.5 py-2.5 text-sm font-semiboldshadow-sm"
+                  >
+                    Get started
+                  </Link>
+                </Button>
+              )}
+
               <Link
                 href={routes.INTERNSHIPS}
                 className="text-sm/6 font-semibold"
