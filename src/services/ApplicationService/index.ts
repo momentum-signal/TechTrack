@@ -1,16 +1,9 @@
 "use server";
 
-import axiosInstance from "@/lib/AxiosInstance";
-import {
-  ApiResponse,
-  CreateResponse,
-  DeleteResponse,
-  GetResponse,
-} from "@/types";
-import { GetApplicationResponseProps } from "@/types/application.types";
-
-import { revalidateTag } from "next/cache";
 import { FieldValues } from "react-hook-form";
+import { revalidateTag } from "next/cache";
+import axiosInstance from "@/lib/AxiosInstance";
+import { CreateResponse, DeleteResponse } from "@/types";
 
 // Create new application
 export const createApplication = async (
@@ -37,13 +30,9 @@ export const createApplication = async (
 };
 
 // Get all applications by user email
-export const getApplicationsByEmail = async (
-  email: string
-): Promise<GetResponse<GetApplicationResponseProps[]>> => {
+export const getApplicationsByEmail = async (email: string) => {
   try {
-    const { data } = await axiosInstance.get<
-      ApiResponse<GetApplicationResponseProps[]>
-    >(`/applications/${email}`);
+    const { data } = await axiosInstance.get(`/applications/${email}`);
     if (data.success) {
       return data; // Return the entire response object
     } else {

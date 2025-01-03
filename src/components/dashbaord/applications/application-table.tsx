@@ -22,17 +22,17 @@ export function ApplicationTable({ applications }: ApplicationTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="font-normal w-1/4">Company name</TableHead>
+            <TableHead className="font-normal w-1/4">Company Name</TableHead>
             <TableHead className="font-normal w-1/4">
-              <div className="flex items-center gap-2">Title</div>
+              <div className="flex items-center gap-2">Internship Role</div>
             </TableHead>
             <TableHead className="font-normal w-1/6">
-              <div className="flex items-center gap-2">Status</div>
+              <div className="flex items-center gap-2">Application Status</div>
             </TableHead>
             <TableHead className="font-normal w-1/5">
               <div className="flex items-center gap-2">Salary Range (MYR)</div>
             </TableHead>
-            <TableHead className="font-normal w-1/6"></TableHead>
+            <TableHead className="font-normal w-1/5"></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

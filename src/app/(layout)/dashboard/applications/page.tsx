@@ -38,7 +38,7 @@ const ApplicationsPage = () => {
     ) {
       fetchApplications(session.user.email);
     } else if (status === "unauthenticated") {
-      setLoading(false); // Handle unauthenticated state if necessary
+      setLoading(false);
     }
   }, [status, session]);
 
@@ -46,6 +46,7 @@ const ApplicationsPage = () => {
     return <Loading />;
   }
 
+  // Handle no application found
   if (applications.length === 0) {
     return (
       <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
@@ -73,7 +74,6 @@ const ApplicationsPage = () => {
       {/* Application Table  */}
       <div className="p-2 md:p-6 rounded-lg border border-dashed shadow-sm">
         <div className="hidden h-full flex-1 flex-col space-y-8 p-0 md:flex">
-          {/* <DataTable data={applications} columns={columns} /> */}
           <ApplicationTable applications={applications} />
         </div>
       </div>

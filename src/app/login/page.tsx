@@ -15,7 +15,9 @@ const LoginPage = ({ callbackUrl }: { callbackUrl: string }) => {
           })
         }
       >
-        <GoogleLogo />
+        <span>
+          <GoogleLogo />
+        </span>
         Login with Google
       </Button>
     </div>
