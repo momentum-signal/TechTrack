@@ -1,42 +1,40 @@
 import React from "react";
 import Image from "next/image";
+import { cny_image, jing_image, sk_image } from "@/assets/assets";
 
 const people = [
   {
     id: 1,
-    name: "Leslie Alexander",
-    role: "Leader",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Cheah Pui Yan",
+    role: "Project Manager / Backend Developer",
+    imageUrl: cny_image,
   },
 
   {
     id: 2,
-    name: "Leslie Alexander",
+    name: "Saiket Das",
     role: "Full-Stack Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1522071740424-8b337d0dfa93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: sk_image,
   },
   {
     id: 3,
-    name: "Leslie Alexander",
+    name: "Kuan Nim joe",
     role: "Backend Developer",
     imageUrl:
       "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
     id: 4,
-    name: "Leslie Alexander",
+    name: "Chia Jia Jing",
     role: "Backend Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: jing_image,
   },
   {
     id: 5,
-    name: "Leslie Alexander",
+    name: "Saufi Husna binti Mohd Yusri",
     role: "Backend Developer",
     imageUrl:
-      "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      "https://images.unsplash.com/photo-1549082984-1323b94df9a6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   // More people...
 ];
